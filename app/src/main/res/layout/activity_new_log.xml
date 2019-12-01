@@ -1,0 +1,55 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/colorScreenBackground"
+    android:orientation="vertical"
+    android:padding="24dp">
+
+    <EditText
+        android:id="@+id/edit_log_odom"
+        style="@style/text_view_style"
+        android:hint="@string/hint_log"
+        android:inputType="textAutoComplete" />
+    <EditText
+        android:id="@+id/edit_log_fuel"
+        style="@style/text_view_style"
+        android:hint="@string/hint_log1"
+        android:inputType="textAutoComplete" />
+    <EditText
+        android:id="@+id/edit_log_price"
+        style="@style/text_view_style"
+        android:hint="@string/hint_log2"
+        android:inputType="textAutoComplete" />
+
+
+
+    <Button
+        android:id="@+id/button_save"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        style="@style/button_style"
+        android:text="@string/button_save"
+        android:onClick="saveData"
+        />
+
+    <TextView
+        android:id="@+id/Output"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginRight="16dp"
+        android:text=""
+       />
+
+    <Button
+        android:id="@+id/button_get"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginBottom="8dp"
+        android:onClick="fetchData"
+        android:text="Get Car" />
+</LinearLayout>

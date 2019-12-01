@@ -1,0 +1,16 @@
+<resources>
+    <string name="app_name">FuelLog</string>
+    <string name="action_settings">Settings</string>
+    <string name="hint_log">Odometer</string>
+    <string name="hint_log1">Fuel</string>
+    <string name="hint_log2">Price</string>
+    <string name="button_save">Save</string>
+    <string name="empty_not_saved">Log not saved because it is empty.</string>
+    <string name="clear_data">Delete all</string>
+    <string name="delete_log_preamble">Deleting </string>
+    <string name="clear_data_toast_text">Clear the data now!</string>
+    <string name="no_log">No log</string>
+    <string name="odometer_readings">Odometer Readings</string>
+    <string name="unable_to_update">Unable to update the log</string>
+    <string name="no_results">No Data</string>
+</resources>
