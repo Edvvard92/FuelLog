@@ -13,4 +13,8 @@
     <string name="odometer_readings">Odometer Readings</string>
     <string name="unable_to_update">Unable to update the log</string>
     <string name="no_results">No Data</string>
+    <string name="get_car">Get Car</string>
+    <string name="car">Car</string>
+    <string name="Output">TextView</string>
+    <string name="get_data">Button</string>
 </resources>

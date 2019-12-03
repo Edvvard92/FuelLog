@@ -33,23 +33,5 @@
         android:onClick="saveData"
         />
 
-    <TextView
-        android:id="@+id/Output"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="24dp"
-        android:layout_marginRight="16dp"
-        android:text=""
-       />
 
-    <Button
-        android:id="@+id/button_get"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="8dp"
-        android:layout_marginEnd="8dp"
-        android:layout_marginBottom="8dp"
-        android:onClick="fetchData"
-        android:text="Get Car" />
 </LinearLayout>

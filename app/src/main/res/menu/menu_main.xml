@@ -12,4 +12,6 @@
         android:orderInCategory="100"
         android:title="@string/clear_data"
         app:showAsAction="never" />
+
+
 </menu>
