@@ -2,33 +2,35 @@ package com.example.fuellog;
 
 public class Calculator {
     // Available operations
-    public enum Operator {ADD, SUB, DIV, MUL}
+    public enum Operator {CostPerGallon, CostPerMile, MilesPerGallon, KMPerLitre}
+
+
 
     /**
-     * Addition operation
+     * CostPerGallon operation
      */
-    public double add(double firstOperand, double secondOperand) {
-        return firstOperand + secondOperand;
-    }
-
-    /**
-     * Subtract operation
-     */
-    public double sub(double firstOperand, double secondOperand) {
-        return firstOperand - secondOperand;
-    }
-
-    /**
-     * Divide operation
-     */
-    public double div(double firstOperand, double secondOperand) {
+    public double CostPerGallon(double firstOperand, double secondOperand) {
         return firstOperand / secondOperand;
     }
 
     /**
-     * Multiply operation
+     * CostPerMile operation
      */
-    public double mul(double firstOperand, double secondOperand) {
-        return firstOperand * secondOperand;
+    public double CostPerMile(double firstOperand, double secondOperand) {
+        return firstOperand / secondOperand;
+    }
+
+    /**
+     * MilesPerGallon operation
+     */
+    public double MilesPerGallon(double firstOperand, double secondOperand) {
+        return firstOperand / secondOperand;
+    }
+    /**
+     * MilesPerGallon operation
+     */
+    public double KMPerLitre(double firstOperand, double secondOperand) {
+        return (firstOperand * 1.6) / (secondOperand * 4.54);
     }
 }
+

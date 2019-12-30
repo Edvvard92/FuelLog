@@ -16,12 +16,11 @@ public class NetworkUtils {
             NetworkUtils.class.getSimpleName();
 
     // Base URL for Vehicle API.
-    // https://vpic.nhtsa.dot.gov/api/
-    private static final String CAR_BASE_URL =  "https://vpic.nhtsa.dot.gov/api/vehicles/getmanufacturerdetails/989?";
+    private static final String CAR_BASE_URL = "https://www.fueleconomy.gov/ws/rest/ympg/shared/ympgVehicle/26425";
     // Parameter to specify XML return data.
     private static final String FORMAT = "format";
 
-    static String getBookInfo(String queryString){
+    static String getBookInfo(String queryString) {
         HttpURLConnection urlConnection = null;
         BufferedReader reader = null;
         String carXMLString = null;

@@ -23,7 +23,7 @@ public class Log {
     @ColumnInfo(name = "log3")
     private String mLog3;
 
-    public Log(@NonNull String log,@NonNull String log2,@NonNull String log3)  {
+    public Log(@NonNull String log, @NonNull String log2, @NonNull String log3) {
         this.mLog = log;
         this.mLog2 = log2;
         this.mLog3 = log3;
@@ -36,7 +36,7 @@ public class Log {
      */
 
     @Ignore
-    public Log(int id, @NonNull String log,@NonNull String log2,@NonNull String log3) {
+    public Log(int id, @NonNull String log, @NonNull String log2, @NonNull String log3) {
         this.id = id;
         this.mLog = log;
         this.mLog2 = log2;
@@ -44,19 +44,24 @@ public class Log {
     }
 
 
-    public String getLog(){
+    public String getLog() {
         return this.mLog;
 
     }
-    public String getLog2(){
+
+    public String getLog2() {
         return this.mLog2;
 
     }
-    public String getLog3(){
+
+    public String getLog3() {
         return this.mLog3;
 
     }
-    public int getId() {return id;}
+
+    public int getId() {
+        return id;
+    }
 
     public void setId(int id) {
         this.id = id;

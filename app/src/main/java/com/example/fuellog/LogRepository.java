@@ -23,10 +23,11 @@ public class LogRepository {
         return mAllLogs;
     }
 
-    public void insert (Log log) {
+    public void insert(Log log) {
         new insertAsyncTask(mLogDao).execute(log);
     }
-    public void update(Log log)  {
+
+    public void update(Log log) {
         new updateLogAsyncTask(mLogDao).execute(log);
     }
 
@@ -45,6 +46,7 @@ public class LogRepository {
             return null;
         }
     }
+
     private static class deleteAllLogsAsyncTask extends AsyncTask<Void, Void, Void> {
         private LogDao mAsyncTaskDao;
 
@@ -58,9 +60,11 @@ public class LogRepository {
             return null;
         }
     }
-    public void deleteAll()  {
+
+    public void deleteAll() {
         new deleteAllLogsAsyncTask(mLogDao).execute();
     }
+
     private static class deleteLogAsyncTask extends AsyncTask<Log, Void, Void> {
         private LogDao mAsyncTaskDao;
 
@@ -74,12 +78,13 @@ public class LogRepository {
             return null;
         }
     }
-    public void deleteLog(Log log)  {
+
+    public void deleteLog(Log log) {
         new deleteLogAsyncTask(mLogDao).execute(log);
     }
 
     /**
-     *  Updates a word in the database.
+     * Updates a word in the database.
      */
     private static class updateLogAsyncTask extends AsyncTask<Log, Void, Void> {
         private LogDao mAsyncTaskDao;

@@ -35,7 +35,7 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mReturnText = (TextView)findViewById(R.id.Output);
+        mReturnText = (TextView) findViewById(R.id.Output);
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -86,14 +86,15 @@ public class MainActivity extends AppCompatActivity {
 
         helper.attachToRecyclerView(recyclerView);
 
-        adapter.setOnItemClickListener(new LogListAdapter.ClickListener(){
+        adapter.setOnItemClickListener(new LogListAdapter.ClickListener() {
             @Override
-            public void onItemClick(View v, int position){
-                Log log =adapter.getLogAtPosition(position);
+            public void onItemClick(View v, int position) {
+                Log log = adapter.getLogAtPosition(position);
                 launchNewLogActivity(log);
             }
         });
     }
+
     public void fetchData(View view) {
         new GetCar(mReturnText).execute("");
     }
@@ -151,10 +152,10 @@ public class MainActivity extends AppCompatActivity {
             String log_data = data.getStringExtra("value1");
             String log2_data = data.getStringExtra("Value2");
             String log3_data = data.getStringExtra("Value3");
-            int id = data.getIntExtra("id",1);
+            int id = data.getIntExtra("id", 1);
 
             if (id != -1) {
-                mLogViewModel.update(new Log(id, log_data, log2_data,log3_data));
+                mLogViewModel.update(new Log(id, log_data, log2_data, log3_data));
             } else {
                 Toast.makeText(this, R.string.unable_to_update,
                         Toast.LENGTH_LONG).show();

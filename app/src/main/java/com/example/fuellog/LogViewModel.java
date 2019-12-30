@@ -13,17 +13,28 @@ public class LogViewModel extends AndroidViewModel {
 
     private LiveData<List<Log>> mAllLogs;
 
-    public LogViewModel (Application application) {
+    public LogViewModel(Application application) {
         super(application);
         mRepository = new LogRepository(application);
         mAllLogs = mRepository.getAllLogs();
     }
 
-    LiveData<List<Log>> getAllLogs() { return mAllLogs; }
+    LiveData<List<Log>> getAllLogs() {
+        return mAllLogs;
+    }
 
-    public void insert(Log log) { mRepository.insert(log); }
-    public void deleteAll() {mRepository.deleteAll();}
-    public void deleteLog(Log log) {mRepository.deleteLog(log);}
+    public void insert(Log log) {
+        mRepository.insert(log);
+    }
+
+    public void deleteAll() {
+        mRepository.deleteAll();
+    }
+
+    public void deleteLog(Log log) {
+        mRepository.deleteLog(log);
+    }
+
     public void update(Log log) {
         mRepository.update(log);
     }

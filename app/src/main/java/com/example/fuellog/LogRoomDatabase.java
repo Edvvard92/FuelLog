@@ -13,6 +13,7 @@ import androidx.sqlite.db.SupportSQLiteDatabase;
 public abstract class LogRoomDatabase extends RoomDatabase {
 
     public abstract LogDao logDao();
+
     private static LogRoomDatabase INSTANCE;
 
     static LogRoomDatabase getDatabase(final Context context) {
@@ -33,7 +34,7 @@ public abstract class LogRoomDatabase extends RoomDatabase {
     private static class PopulateDbAsync extends AsyncTask<Void, Void, Void> {
 
         private final LogDao mDao;
-        String[] logs= {};
+        String[] logs = {};
 
         PopulateDbAsync(LogRoomDatabase db) {
             mDao = db.logDao();
@@ -42,21 +43,22 @@ public abstract class LogRoomDatabase extends RoomDatabase {
         @Override
         protected Void doInBackground(final Void... params) {
 
-       //      If we have no logs, then create the initial list of logs
-       //     if (mDao.getAnyLog().length < 1) {
-         //      for (int i = 0; i <= logs.length - 1; i++) {
-       //             Log log = new Log(logs[i]);
-       //             mDao.insert(log);
-        //        }
-        //    }
+            //      If we have no logs, then create the initial list of logs
+            //     if (mDao.getAnyLog().length < 1) {
+            //      for (int i = 0; i <= logs.length - 1; i++) {
+            //             Log log = new Log(logs[i]);
+            //             mDao.insert(log);
+            //        }
+            //    }
             return null;
         }
     }
+
     private static RoomDatabase.Callback sRoomDatabaseCallback =
-            new RoomDatabase.Callback(){
+            new RoomDatabase.Callback() {
 
                 @Override
-                public void onOpen (@NonNull SupportSQLiteDatabase db){
+                public void onOpen(@NonNull SupportSQLiteDatabase db) {
                     super.onOpen(db);
                     new PopulateDbAsync(INSTANCE).execute();
                 }

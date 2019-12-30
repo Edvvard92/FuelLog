@@ -1,9 +1,9 @@
 <resources>
     <string name="app_name">FuelLog</string>
     <string name="action_settings">Settings</string>
-    <string name="hint_log">Odometer</string>
-    <string name="hint_log1">Fuel</string>
-    <string name="hint_log2">Price</string>
+    <string name="hint_log">Miles</string>
+    <string name="hint_log1">Gallons</string>
+    <string name="hint_log2">Cost</string>
     <string name="button_save">Save</string>
     <string name="empty_not_saved">Log not saved because it is empty.</string>
     <string name="clear_data">Delete all</string>
@@ -21,16 +21,16 @@
     <string name="your_car">YourCar</string>
 
     <!-- Button label for add operation -->
-    <string name="add_operation_text">Add</string>
+    <string name="kmperlitre_operation_text">KMPerLitre</string>
 
     <!-- Button label for subtract operation -->
-    <string name="sub_operation_text">Sub</string>
+    <string name="milespergallon_operation_text">MilesPerGallon</string>
 
     <!-- Button label for divide operation -->
-    <string name="div_operation_text">Div</string>
+    <string name="costpergallon_operation_text">CostPerGallon</string>
 
     <!-- Button label for mul operation -->
-    <string name="mul_operation_text">Mul</string>
+    <string name="costpermile_operation_text">CostPerMile</string>
 
     <!-- Message for textview in case of errors  -->
     <string name="computationError">Error</string>

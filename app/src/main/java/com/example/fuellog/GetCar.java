@@ -3,12 +3,15 @@ package com.example.fuellog;
 import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.TextView;
+
 import com.example.fuellog.R;
+
 import org.json.JSONArray;
 import org.json.JSONObject;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
+
 import java.io.IOException;
 import java.io.InputStream;
 import java.io.StringReader;
@@ -38,18 +41,18 @@ public class GetCar extends AsyncTask<String, Void, String> {
 
 
             try {
-                mpg = data.get("Address");
+                mpg = data.get("avgMpg");
             } catch (Exception e) {
                 e.printStackTrace();
             }
 
-            if(mpg != null){
+            if (mpg != null) {
                 mReturnData.get().setText(mpg);
             } else {
                 mReturnData.get().setText(R.string.no_results);
             }
 
-        }catch (Exception e) {
+        } catch (Exception e) {
             // If onPostExecute does not receive a proper JSON string,
             // update the UI to show failed results.
             mReturnData.get().setText(R.string.no_results);
@@ -83,14 +86,11 @@ public class GetCar extends AsyncTask<String, Void, String> {
                 }
                 eventType = xpp.next();
             }
-        }
-        catch (XmlPullParserException e) {
+        } catch (XmlPullParserException e) {
             e.printStackTrace();
-        }
-        catch (IOException e) {
+        } catch (IOException e) {
             e.printStackTrace();
-        }
-        catch (Exception e) {
+        } catch (Exception e) {
             Log.d("Exception attribute", e + "+" + tagName);
         }
 

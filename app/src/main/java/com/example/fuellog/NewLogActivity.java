@@ -41,23 +41,23 @@ public class NewLogActivity extends AppCompatActivity {
     /**
      * OnClick method called when the add Button is pressed.
      */
-    public void onAdd(View view) {
-        compute(Calculator.Operator.ADD);
+    public void onMilesPerGallon(View view) {
+        compute(Calculator.Operator.MilesPerGallon);
     }
 
     /**
      * OnClick method called when the subtract Button is pressed.
      */
-    public void onSub(View view) {
-        compute(Calculator.Operator.SUB);
+    public void onKMPerLitre(View view) {
+        compute(Calculator.Operator.KMPerLitre);
     }
 
     /**
      * OnClick method called when the divide Button is pressed.
      */
-    public void onDiv(View view) {
+    public void onGallon(View view) {
         try {
-            compute(Calculator.Operator.DIV);
+            compute(Calculator.Operator.CostPerGallon);
         } catch (IllegalArgumentException iae) {
             Log.e(TAG, "IllegalArgumentException", iae);
             mResultTextView.setText(getString(R.string.computationError));
@@ -67,8 +67,8 @@ public class NewLogActivity extends AppCompatActivity {
     /**
      * OnClick method called when the multiply Button is pressed.
      */
-    public void onMul(View view) {
-        compute(Calculator.Operator.MUL);
+    public void onMile(View view) {
+        compute(Calculator.Operator.CostPerMile);
     }
 
     private void compute(Calculator.Operator operator) {
@@ -87,21 +87,21 @@ public class NewLogActivity extends AppCompatActivity {
 
         String result;
         switch (operator) {
-            case ADD:
+            case MilesPerGallon:
                 result = String.valueOf(
-                        mCalculator.add(operandOne, operandTwo));
+                        mCalculator.MilesPerGallon(operandOne, operandTwo));
                 break;
-            case SUB:
+            case KMPerLitre:
                 result = String.valueOf(
-                        mCalculator.sub(operandOne, operandTwo));
+                        mCalculator.KMPerLitre(operandOne, operandTwo));
                 break;
-            case DIV:
+            case CostPerGallon:
                 result = String.valueOf(
-                        mCalculator.div(operandOne, operandTwo));
+                        mCalculator.CostPerGallon(operandThree, operandOne));
                 break;
-            case MUL:
+            case CostPerMile:
                 result = String.valueOf(
-                        mCalculator.mul(operandOne, operandTwo));
+                        mCalculator.CostPerMile(operandThree, operandTwo));
                 break;
             default:
                 result = getString(R.string.computationError);
@@ -125,14 +125,9 @@ public class NewLogActivity extends AppCompatActivity {
         return operandEditText.getText().toString();
     }
 
-
-
-
-
-
     public void saveData(View view) {
         Log.d(TAG, "saveData: method called");
-        try{
+        try {
             Intent replyIntent1 = new Intent(NewLogActivity.this, MainActivity.class);
 
             Log.d(TAG, "saveData: value1 " + mEditLogOdometer.getText().toString());

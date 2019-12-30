@@ -16,7 +16,9 @@ public class LogListAdapter extends RecyclerView.Adapter<LogListAdapter.LogViewH
     private List<Log> mLogs;
     private static ClickListener clickListener;
 
-    LogListAdapter(Context context) { mInflater = LayoutInflater.from(context); }
+    LogListAdapter(Context context) {
+        mInflater = LayoutInflater.from(context);
+    }
 
     @Override
     public LogViewHolder onCreateViewHolder(ViewGroup parent, int viewType) {
@@ -40,7 +42,7 @@ public class LogListAdapter extends RecyclerView.Adapter<LogListAdapter.LogViewH
         }
     }
 
-    void setLogs(List<Log> logs){
+    void setLogs(List<Log> logs) {
         mLogs = logs;
         notifyDataSetChanged();
     }
@@ -51,6 +53,7 @@ public class LogListAdapter extends RecyclerView.Adapter<LogListAdapter.LogViewH
             return mLogs.size();
         else return 0;
     }
+
     public Log getLogAtPosition(int position) {
         return mLogs.get(position);
     }
@@ -73,6 +76,7 @@ public class LogListAdapter extends RecyclerView.Adapter<LogListAdapter.LogViewH
             });
         }
     }
+
     public void setOnItemClickListener(ClickListener clickListener) {
         LogListAdapter.clickListener = clickListener;
     }
