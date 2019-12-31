@@ -25,9 +25,9 @@ import android.widget.Toast;
 import java.util.List;
 
 public class MainActivity extends AppCompatActivity {
-    private static final String TAG = "MainActivity";
     public static final int EXTRA_REPLY = 1;
     public static final int EXTRA_UPDATE = 2;
+    private static final String TAG = "MainActivity";
     private LogViewModel mLogViewModel;
     private TextView mReturnText;
 

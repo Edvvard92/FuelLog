@@ -1,8 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:background="@color/colorScreenBackground"
+    app:layout_behavior="@string/appbar_scrolling_view_behavior"
     android:orientation="vertical"
     android:padding="24dp">
 
@@ -10,61 +13,124 @@
         android:id="@+id/edit_log_odom"
         style="@style/text_view_style"
         android:hint="@string/hint_log"
-        android:inputType="textAutoComplete" />
+        android:importantForAutofill="no"
+        android:inputType="textAutoComplete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
     <EditText
         android:id="@+id/edit_log_fuel"
         style="@style/text_view_style"
         android:hint="@string/hint_log1"
-        android:inputType="textAutoComplete" />
+        android:importantForAutofill="no"
+        android:inputType="textAutoComplete"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_log_odom" />
+
     <EditText
         android:id="@+id/edit_log_price"
         style="@style/text_view_style"
         android:hint="@string/hint_log2"
-        android:inputType="textAutoComplete" />
-
-
+        android:importantForAutofill="no"
+        android:inputType="textAutoComplete"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_log_fuel" />
 
     <Button
         android:id="@+id/button_save"
+        style="@style/button_style"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        style="@style/button_style"
-        android:text="@string/button_save"
+        android:layout_marginStart="16dp"
         android:onClick="saveData"
-        />
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"/>
+        android:text="@string/button_save"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button_cancel"
+        style="@style/button_style"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:onClick="cancel"
+        android:text="@string/button_cancel"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <TextView
         android:id="@+id/operation_result_text_view"
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content" />
+        android:layout_height="wrap_content"
+        android:layout_marginStart="140dp"
+        android:layout_marginTop="28dp"
+        android:text="@string/result"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/operation_costpermile_btn" />
 
     <Button
         android:id="@+id/operation_costpermile_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
         android:onClick="onMile"
-        android:text="@string/costpermile_operation_text" />
+        android:text="@string/costpermile_operation_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/operation_kmpergallon_btn" />
 
     <Button
         android:id="@+id/operation_costpergallon_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginStart="196dp"
+        android:layout_marginTop="28dp"
         android:onClick="onGallon"
-        android:text="@string/costpergallon_operation_text" />
+        android:text="@string/costpergallon_operation_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/operation_milespergallon_btn" />
+
     <Button
         android:id="@+id/operation_milespergallon_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
+        android:layout_marginEnd="24dp"
         android:onClick="onMilesPerGallon"
-        android:text="@string/milespergallon_operation_text" />
+        android:text="@string/milespergallon_operation_text"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_log_price" />
+
     <Button
         android:id="@+id/operation_kmpergallon_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginTop="56dp"
         android:onClick="onKMPerLitre"
-        android:text="@string/kmperlitre_operation_text" />
+        android:text="@string/kmperlitre_operation_text"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_log_price" />
 
-</LinearLayout>
+    <Button
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="96dp"
+        android:onClick="fetchData"
+        android:text="@string/get_info"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/Output"
+        android:layout_width="239dp"
+        android:layout_height="25dp"
+        android:layout_marginBottom="104dp"
+        android:text="@string/your_car"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.697"
+        app:layout_constraintStart_toEndOf="@+id/button" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

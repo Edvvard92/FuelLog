@@ -5,6 +5,7 @@
     <string name="hint_log1">Gallons</string>
     <string name="hint_log2">Cost</string>
     <string name="button_save">Save</string>
+    <string name="button_cancel">Cancel</string>
     <string name="empty_not_saved">Log not saved because it is empty.</string>
     <string name="clear_data">Delete all</string>
     <string name="delete_log_preamble">Deleting </string>
@@ -17,8 +18,8 @@
     <string name="car">Car</string>
     <string name="Output">TextView</string>
     <string name="get_data">Button</string>
-    <string name="get_info">GetCar</string>
-    <string name="your_car">YourCar</string>
+    <string name="get_info">GetAvgMPG</string>
+    <string name="your_car">AvgMPG</string>
 
     <!-- Button label for add operation -->
     <string name="kmperlitre_operation_text">KMPerLitre</string>
@@ -34,4 +35,5 @@
 
     <!-- Message for textview in case of errors  -->
     <string name="computationError">Error</string>
+    <string name="result">Result</string>
 </resources>
