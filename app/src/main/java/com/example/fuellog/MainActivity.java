@@ -27,6 +27,8 @@ import java.util.List;
 public class MainActivity extends AppCompatActivity {
     public static final int EXTRA_REPLY = 1;
     public static final int EXTRA_UPDATE = 2;
+    public static final String EXTRA_DATA_UPDATE_LOG = "extra_log_to_be_updated";
+    public static final String EXTRA_DATA_ID = "extra_data_id";
     private static final String TAG = "MainActivity";
     private LogViewModel mLogViewModel;
     private TextView mReturnText;
@@ -60,6 +62,8 @@ public class MainActivity extends AppCompatActivity {
                 adapter.setLogs(logs);
             }
         });
+
+
 
         ItemTouchHelper helper = new ItemTouchHelper(
                 new ItemTouchHelper.SimpleCallback(0,
@@ -166,5 +170,14 @@ public class MainActivity extends AppCompatActivity {
                     R.string.empty_not_saved,
                     Toast.LENGTH_LONG).show();
         }
+    }
+
+    public void launchUpdateWordActivity( Log log) {
+        Intent intent = new Intent(this, NewLogActivity.class);
+        intent.putExtra(EXTRA_DATA_UPDATE_LOG, log.getLog());
+        intent.putExtra(EXTRA_DATA_UPDATE_LOG, log.getLog2());
+        intent.putExtra(EXTRA_DATA_UPDATE_LOG, log.getLog3());
+        intent.putExtra(EXTRA_DATA_ID, log.getId());
+        startActivityForResult(intent, EXTRA_UPDATE);
     }
 }

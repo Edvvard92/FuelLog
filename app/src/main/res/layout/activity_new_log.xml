@@ -39,15 +39,16 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_log_fuel" />
 
+
     <Button
         android:id="@+id/button_save"
         style="@style/button_style"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:onClick="saveData"
+        android:layout_width="135dp"
+        android:layout_height="44dp"
         android:text="@string/button_save"
         app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toStartOf="@+id/button_cancel"
+        app:layout_constraintHorizontal_bias="0.176"
         app:layout_constraintStart_toStartOf="parent" />
 
     <Button
