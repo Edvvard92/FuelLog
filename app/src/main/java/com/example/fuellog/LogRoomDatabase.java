@@ -9,7 +9,7 @@ import androidx.room.Room;
 import androidx.room.RoomDatabase;
 import androidx.sqlite.db.SupportSQLiteDatabase;
 
-@Database(entities = {Log.class}, version = 1, exportSchema = false)
+@Database(entities = {LogCar.class}, version = 2, exportSchema = false)
 public abstract class LogRoomDatabase extends RoomDatabase {
 
     public abstract LogDao logDao();
@@ -44,12 +44,10 @@ public abstract class LogRoomDatabase extends RoomDatabase {
         protected Void doInBackground(final Void... params) {
 
             //      If we have no logs, then create the initial list of logs
-            //     if (mDao.getAnyLog().length < 1) {
-            //      for (int i = 0; i <= logs.length - 1; i++) {
-            //             Log log = new Log(logs[i]);
-            //             mDao.insert(log);
-            //        }
-            //    }
+                 if (mDao.getAnyLog().length < 1) {
+                   LogCar logCar = new LogCar("123", "242", "323");
+                   mDao.insert(logCar);
+                }
             return null;
         }
     }

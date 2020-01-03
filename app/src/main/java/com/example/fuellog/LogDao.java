@@ -14,21 +14,21 @@ import java.util.List;
 public interface LogDao {
 
     @Insert(onConflict = OnConflictStrategy.IGNORE)
-    void insert(Log log);
+    void insert(LogCar logCar);
 
-    @Query("DELETE FROM log_table")
+    @Query("DELETE FROM  log_table")
     void deleteAll();
 
     @Query("SELECT * from log_table ORDER BY log ASC")
-    LiveData<List<Log>> getAllLogs();
+    LiveData<List<LogCar>> getAllLogs();
 
     @Query("SELECT * from log_table LIMIT 1")
-    Log[] getAnyLog();
+    LogCar[] getAnyLog();
 
     @Delete
-    void deleteLog(Log log);
+    void deleteLog(LogCar logCar);
 
     @Update
-    void update(Log... log);
+    void update(LogCar... logCar);
 }
 

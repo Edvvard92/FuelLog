@@ -9,16 +9,17 @@
     android:orientation="vertical"
     android:padding="24dp">
 
+
     <EditText
         android:id="@+id/edit_log_odom"
         style="@style/text_view_style"
+        android:layout_marginTop="40dp"
         android:hint="@string/hint_log"
         android:importantForAutofill="no"
         android:inputType="textAutoComplete"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
-
 
     <EditText
         android:id="@+id/edit_log_fuel"
@@ -46,6 +47,7 @@
         android:layout_width="135dp"
         android:layout_height="44dp"
         android:text="@string/button_save"
+        android:onClick="saveData"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toStartOf="@+id/button_cancel"
         app:layout_constraintHorizontal_bias="0.176"
@@ -133,5 +135,15 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.697"
         app:layout_constraintStart_toEndOf="@+id/button" />
+
+    <Button
+        android:id="@+id/update"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Button"
+        android:onClick="update"
+
+        app:layout_constraintBottom_toTopOf="@+id/button_cancel"
+        app:layout_constraintEnd_toEndOf="parent" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

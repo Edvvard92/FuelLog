@@ -1,6 +1,9 @@
 package com.example.fuellog;
 
+
+
 public class Calculator {
+ ;
     // Available operations
     public enum Operator {CostPerGallon, CostPerMile, MilesPerGallon, KMPerLitre}
 

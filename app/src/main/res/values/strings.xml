@@ -10,9 +10,9 @@
     <string name="clear_data">Delete all</string>
     <string name="delete_log_preamble">Deleting </string>
     <string name="clear_data_toast_text">Clear the data now!</string>
-    <string name="no_log">No log</string>
+    <string name="no_log">No logCar</string>
     <string name="odometer_readings">Odometer Readings</string>
-    <string name="unable_to_update">Unable to update the log</string>
+    <string name="unable_to_update">Unable to update the logCar</string>
     <string name="no_results">No Data</string>
     <string name="get_car">Get Car</string>
     <string name="car">Car</string>

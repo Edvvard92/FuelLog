@@ -13,7 +13,7 @@ import java.util.List;
 public class LogListAdapter extends RecyclerView.Adapter<LogListAdapter.LogViewHolder> {
 
     private final LayoutInflater mInflater;
-    private List<Log> mLogs;
+    private List<LogCar> mLogCars;
     private static ClickListener clickListener;
 
     LogListAdapter(Context context) {
@@ -28,8 +28,8 @@ public class LogListAdapter extends RecyclerView.Adapter<LogListAdapter.LogViewH
 
     @Override
     public void onBindViewHolder(LogViewHolder holder, int position) {
-        if (mLogs != null) {
-            Log current = mLogs.get(position);
+        if (mLogCars != null) {
+            LogCar current = mLogCars.get(position);
 
             holder.logItemView.setText(current.getLog());
             holder.log2.setText(current.getLog2());
@@ -38,24 +38,24 @@ public class LogListAdapter extends RecyclerView.Adapter<LogListAdapter.LogViewH
 
         } else {
             // Covers the case of data not being ready yet.
-            holder.logItemView.setText("No Log");
+            holder.logItemView.setText("No LogCar");
         }
     }
 
-    void setLogs(List<Log> logs) {
-        mLogs = logs;
+    void setLogs(List<LogCar> logCars) {
+        mLogCars = logCars;
         notifyDataSetChanged();
     }
 
     @Override
     public int getItemCount() {
-        if (mLogs != null)
-            return mLogs.size();
+        if (mLogCars != null)
+            return mLogCars.size();
         else return 0;
     }
 
-    public Log getLogAtPosition(int position) {
-        return mLogs.get(position);
+    public LogCar getLogAtPosition(int position) {
+        return mLogCars.get(position);
     }
 
     class LogViewHolder extends RecyclerView.ViewHolder {

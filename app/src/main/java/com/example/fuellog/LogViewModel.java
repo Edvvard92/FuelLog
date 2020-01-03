@@ -11,7 +11,7 @@ public class LogViewModel extends AndroidViewModel {
 
     private LogRepository mRepository;
 
-    private LiveData<List<Log>> mAllLogs;
+    private LiveData<List<LogCar>> mAllLogs;
 
     public LogViewModel(Application application) {
         super(application);
@@ -19,24 +19,24 @@ public class LogViewModel extends AndroidViewModel {
         mAllLogs = mRepository.getAllLogs();
     }
 
-    LiveData<List<Log>> getAllLogs() {
+    LiveData<List<LogCar>> getAllLogs() {
         return mAllLogs;
     }
 
-    public void insert(Log log) {
-        mRepository.insert(log);
+    public void insert(LogCar logCar) {
+        mRepository.insert(logCar);
     }
 
     public void deleteAll() {
         mRepository.deleteAll();
     }
 
-    public void deleteLog(Log log) {
-        mRepository.deleteLog(log);
+    public void deleteLog(LogCar logCar) {
+        mRepository.deleteLog(logCar);
     }
 
-    public void update(Log log) {
-        mRepository.update(log);
+    public void update(LogCar logCar) {
+        mRepository.update(logCar);
     }
 }
 

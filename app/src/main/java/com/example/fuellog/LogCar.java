@@ -7,7 +7,7 @@ import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
 @Entity(tableName = "log_table")
-public class Log {
+public class LogCar {
 
     @PrimaryKey(autoGenerate = true)
     @ColumnInfo(name = "id")
@@ -23,7 +23,8 @@ public class Log {
     @ColumnInfo(name = "log3")
     private String mLog3;
 
-    public Log(@NonNull String log, @NonNull String log2, @NonNull String log3) {
+    public LogCar(@NonNull String log, String log2, String log3) {
+
         this.mLog = log;
         this.mLog2 = log2;
         this.mLog3 = log3;
@@ -36,7 +37,7 @@ public class Log {
      */
 
     @Ignore
-    public Log(int id, @NonNull String log, @NonNull String log2, @NonNull String log3) {
+    public LogCar(int id, @NonNull String log, @NonNull String log2, @NonNull String log3) {
         this.id = id;
         this.mLog = log;
         this.mLog2 = log2;

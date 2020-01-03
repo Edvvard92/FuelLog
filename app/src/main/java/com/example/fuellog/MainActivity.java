@@ -4,18 +4,17 @@ import android.content.Intent;
 import android.os.Bundle;
 
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
-import com.google.android.material.snackbar.Snackbar;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.lifecycle.Observer;
-import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProviders;
 import androidx.recyclerview.widget.ItemTouchHelper;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.util.Log;
 import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
@@ -56,10 +55,10 @@ public class MainActivity extends AppCompatActivity {
         recyclerView.setLayoutManager(new LinearLayoutManager(this));
 
         mLogViewModel = ViewModelProviders.of(this).get(LogViewModel.class);
-        mLogViewModel.getAllLogs().observe(this, new Observer<List<Log>>() {
+        mLogViewModel.getAllLogs().observe(this, new Observer<List<LogCar>>() {
             @Override
-            public void onChanged(@Nullable final List<Log> logs) {
-                adapter.setLogs(logs);
+            public void onChanged(@Nullable final List<LogCar> logCars) {
+                adapter.setLogs(logCars);
             }
         });
 
@@ -79,12 +78,12 @@ public class MainActivity extends AppCompatActivity {
                     public void onSwiped(RecyclerView.ViewHolder viewHolder,
                                          int direction) {
                         int position = viewHolder.getAdapterPosition();
-                        Log myLog = adapter.getLogAtPosition(position);
+                        LogCar myLogCar = adapter.getLogAtPosition(position);
                         Toast.makeText(MainActivity.this, "Deleting " +
-                                myLog.getLog(), Toast.LENGTH_LONG).show();
+                                myLogCar.getLog(), Toast.LENGTH_LONG).show();
 
                         // Delete the log
-                        mLogViewModel.deleteLog(myLog);
+                        mLogViewModel.deleteLog(myLogCar);
                     }
                 });
 
@@ -93,8 +92,8 @@ public class MainActivity extends AppCompatActivity {
         adapter.setOnItemClickListener(new LogListAdapter.ClickListener() {
             @Override
             public void onItemClick(View v, int position) {
-                Log log = adapter.getLogAtPosition(position);
-                launchNewLogActivity(log);
+                LogCar logCar = adapter.getLogAtPosition(position);
+                launchNewLogActivity(logCar);
             }
         });
     }
@@ -103,16 +102,17 @@ public class MainActivity extends AppCompatActivity {
         new GetCar(mReturnText).execute("");
     }
 
-    private void launchNewLogActivity(Log log) {
+    private void launchNewLogActivity(LogCar logCar) {
         Intent intent = new Intent(this, NewLogActivity.class);
         Bundle extras = new Bundle();
 
-        extras.putInt("id", log.getId());
-        extras.putString("distance", log.getLog());
-        extras.putString("fuelAmount", log.getLog3());
-        extras.putString("fuelPrice", log.getLog2());
+        extras.putInt("id", logCar.getId());
+        extras.putString("distance", logCar.getLog());
+        extras.putString("fuelAmount", logCar.getLog3());
+        extras.putString("fuelPrice", logCar.getLog2());
         intent.putExtras(extras);
-        startActivityForResult(intent, 1);
+        Log.e(TAG, "launchNewLogActivity: " + logCar.getId() );
+        startActivityForResult(intent, EXTRA_UPDATE);
     }
 
     @Override
@@ -144,40 +144,21 @@ public class MainActivity extends AppCompatActivity {
         android.util.Log.d(TAG, "onActivityResult: requestCode: " + requestCode + " resultCode: " + resultCode);
         super.onActivityResult(requestCode, resultCode, data);
 
-        android.util.Log.d(TAG, "onActivityResult: value1:" + data.getStringExtra("value1"));
-        android.util.Log.d(TAG, "onActivityResult: value2:" + data.getStringExtra("value2"));
-        android.util.Log.d(TAG, "onActivityResult: value3:" + data.getStringExtra("value3"));
-        if (requestCode == EXTRA_REPLY) {
-            android.util.Log.d(TAG, "onActivityResult: replyCode " + EXTRA_REPLY + " resultCode: " + RESULT_OK);
-            Log log = new Log(data.getStringExtra("value1"), data.getStringExtra("value2"), data.getStringExtra("value3"));
-            mLogViewModel.insert(log);
-        } else if (requestCode == EXTRA_UPDATE) {
-            android.util.Log.d(TAG, "onActivityResult: replyCode " + EXTRA_REPLY + " resultCode: " + RESULT_OK);
-            String log_data = data.getStringExtra("value1");
-            String log2_data = data.getStringExtra("Value2");
-            String log3_data = data.getStringExtra("Value3");
-            int id = data.getIntExtra("id", 1);
 
-            if (id != -1) {
-                mLogViewModel.update(new Log(id, log_data, log2_data, log3_data));
-            } else {
-                Toast.makeText(this, R.string.unable_to_update,
-                        Toast.LENGTH_LONG).show();
-            }
-        } else {
-            Toast.makeText(
-                    getApplicationContext(),
-                    R.string.empty_not_saved,
-                    Toast.LENGTH_LONG).show();
+        if (requestCode == 2) {
+            android.util.Log.d(TAG, "onActivityResult: replyCode " + EXTRA_REPLY + " resultCode: " + RESULT_OK);
+            // LogCar logCar = new LogCar(data.getStringExtra("updateDist"), data.getStringExtra("updateAmo"), data.getStringExtra("updatePri"));
+            // mLogViewModel.insert(logCar);
         }
-    }
+        if (requestCode == RESULT_OK) {
+            android.util.Log.d(TAG, "onActivityResult: replyCode " + EXTRA_REPLY + " resultCode: " + RESULT_OK);
+            String log_data = data.getStringExtra("updateDist");
+            String log2_data = data.getStringExtra("updateAmo");
+            String log3_data = data.getStringExtra("updatePri");
+            int id = data.getIntExtra("id", 1);
+            mLogViewModel.update(new LogCar(id,log_data,log2_data,log3_data));
 
-    public void launchUpdateWordActivity( Log log) {
-        Intent intent = new Intent(this, NewLogActivity.class);
-        intent.putExtra(EXTRA_DATA_UPDATE_LOG, log.getLog());
-        intent.putExtra(EXTRA_DATA_UPDATE_LOG, log.getLog2());
-        intent.putExtra(EXTRA_DATA_UPDATE_LOG, log.getLog3());
-        intent.putExtra(EXTRA_DATA_ID, log.getId());
-        startActivityForResult(intent, EXTRA_UPDATE);
+        }
+
     }
 }

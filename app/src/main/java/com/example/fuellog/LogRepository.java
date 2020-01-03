@@ -4,14 +4,13 @@ import android.app.Application;
 import android.os.AsyncTask;
 
 import androidx.lifecycle.LiveData;
-import androidx.room.Dao;
 
 import java.util.List;
 
 public class LogRepository {
 
     private LogDao mLogDao;
-    private LiveData<List<Log>> mAllLogs;
+    private LiveData<List<LogCar>> mAllLogs;
 
     LogRepository(Application application) {
         LogRoomDatabase db = LogRoomDatabase.getDatabase(application);
@@ -19,19 +18,19 @@ public class LogRepository {
         mAllLogs = mLogDao.getAllLogs();
     }
 
-    LiveData<List<Log>> getAllLogs() {
+    LiveData<List<LogCar>> getAllLogs() {
         return mAllLogs;
     }
 
-    public void insert(Log log) {
-        new insertAsyncTask(mLogDao).execute(log);
+    public void insert(LogCar logCar) {
+        new insertAsyncTask(mLogDao).execute(logCar);
     }
 
-    public void update(Log log) {
-        new updateLogAsyncTask(mLogDao).execute(log);
+    public void update(LogCar logCar) {
+        new updateLogAsyncTask(mLogDao).execute(logCar);
     }
 
-    private static class insertAsyncTask extends AsyncTask<Log, Void, Void> {
+    private static class insertAsyncTask extends AsyncTask<LogCar, Void, Void> {
 
         private LogDao mAsyncTaskDao;
 
@@ -41,7 +40,7 @@ public class LogRepository {
         }
 
         @Override
-        protected Void doInBackground(final Log... params) {
+        protected Void doInBackground(final LogCar... params) {
             mAsyncTaskDao.insert(params[0]);
             return null;
         }
@@ -65,7 +64,7 @@ public class LogRepository {
         new deleteAllLogsAsyncTask(mLogDao).execute();
     }
 
-    private static class deleteLogAsyncTask extends AsyncTask<Log, Void, Void> {
+    private static class deleteLogAsyncTask extends AsyncTask<LogCar, Void, Void> {
         private LogDao mAsyncTaskDao;
 
         deleteLogAsyncTask(LogDao dao) {
@@ -73,20 +72,20 @@ public class LogRepository {
         }
 
         @Override
-        protected Void doInBackground(final Log... params) {
+        protected Void doInBackground(final LogCar... params) {
             mAsyncTaskDao.deleteLog(params[0]);
             return null;
         }
     }
 
-    public void deleteLog(Log log) {
-        new deleteLogAsyncTask(mLogDao).execute(log);
+    public void deleteLog(LogCar logCar) {
+        new deleteLogAsyncTask(mLogDao).execute(logCar);
     }
 
     /**
      * Updates a word in the database.
      */
-    private static class updateLogAsyncTask extends AsyncTask<Log, Void, Void> {
+    private static class updateLogAsyncTask extends AsyncTask<LogCar, Void, Void> {
         private LogDao mAsyncTaskDao;
 
         updateLogAsyncTask(LogDao dao) {
@@ -94,7 +93,7 @@ public class LogRepository {
         }
 
         @Override
-        protected Void doInBackground(final Log... params) {
+        protected Void doInBackground(final LogCar... params) {
             mAsyncTaskDao.update(params[0]);
             return null;
         }
