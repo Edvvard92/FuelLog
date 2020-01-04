@@ -26,7 +26,7 @@ public class NewLogActivity extends AppCompatActivity {
     private EditText mEditLogFuel;
     private EditText mEditLogPrice;
     private TextView mResultTextView;
-    private TextView mReturnText;
+    private EditText mReturnText;
     private View Update;
     private Integer Id;
     private String distance, price, amount;
@@ -55,7 +55,7 @@ public class NewLogActivity extends AppCompatActivity {
         mEditLogOdometer = findViewById(R.id.edit_log_odom);
         mEditLogFuel = findViewById(R.id.edit_log_fuel);
         mEditLogPrice = findViewById(R.id.edit_log_price);
-        mReturnText = (TextView)findViewById(R.id.Output);
+        mReturnText = findViewById(R.id.Output);
 
 
         // Initialize the calculator class and all the views
@@ -76,6 +76,10 @@ public class NewLogActivity extends AppCompatActivity {
             String pri = extras.getString("fuelPrice", "");
 
             if (!dist.isEmpty()) {
+                mEditLogOdometer.setText(dist);
+                mEditLogOdometer.setSelection(dist.length());
+                mEditLogOdometer.requestFocus();
+
                 mEditLogFuel.setText(amo);
                 mEditLogFuel.setSelection(amo.length());
                 mEditLogFuel.requestFocus();
@@ -83,10 +87,6 @@ public class NewLogActivity extends AppCompatActivity {
                 mEditLogPrice.setText(pri);
                 mEditLogPrice.setSelection(pri.length());
                 mEditLogPrice.requestFocus();
-
-                mEditLogOdometer.setText(dist);
-                mEditLogOdometer.setSelection(dist.length());
-                mEditLogOdometer.requestFocus();
             }
         } // Otherwise, start with empty fields.
 
@@ -137,23 +137,20 @@ public class NewLogActivity extends AppCompatActivity {
         new GetCar(mReturnText).execute("");
     }
 
-    /**
-     * OnClick method called when the add Button is pressed.
-     */
+
     public void onMilesPerGallon(View view) {
         compute(Calculator.Operator.MilesPerGallon);
     }
 
-    /**
-     * OnClick method called when the subtract Button is pressed.
-     */
+
     public void onKMPerLitre(View view) {
         compute(Calculator.Operator.KMPerLitre);
     }
+    public void onTest(View view) {
+        compute(Calculator.Operator.test);
+    }
 
-    /**
-     * OnClick method called when the divide Button is pressed.
-     */
+
     public void onGallon(View view) {
         try {
             compute(Calculator.Operator.CostPerGallon);
@@ -174,10 +171,12 @@ public class NewLogActivity extends AppCompatActivity {
         double operandOne;
         double operandTwo;
         double operandThree;
+        double operandFour;
         try {
             operandOne = getOperand(mEditLogOdometer);
             operandTwo = getOperand(mEditLogFuel);
             operandThree = getOperand(mEditLogPrice);
+            operandFour = getOperand((EditText) mReturnText);
         } catch (NumberFormatException nfe) {
             Log.e(TAG, "NumberFormatException", nfe);
             mResultTextView.setText(getString(R.string.computationError));
@@ -201,6 +200,10 @@ public class NewLogActivity extends AppCompatActivity {
             case CostPerMile:
                 result = String.valueOf(
                         mCalculator.CostPerMile(operandThree, operandTwo));
+                break;
+            case test:
+                result = String.valueOf(
+                        mCalculator.test(operandFour));
                 break;
             default:
                 result = getString(R.string.computationError);

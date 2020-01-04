@@ -143,19 +143,17 @@ public class MainActivity extends AppCompatActivity {
     public void onActivityResult(int requestCode, int resultCode, Intent data) {
         android.util.Log.d(TAG, "onActivityResult: requestCode: " + requestCode + " resultCode: " + resultCode);
         super.onActivityResult(requestCode, resultCode, data);
-
-
-        if (requestCode == 2) {
+        if (requestCode == EXTRA_REPLY) {
             android.util.Log.d(TAG, "onActivityResult: replyCode " + EXTRA_REPLY + " resultCode: " + RESULT_OK);
-            // LogCar logCar = new LogCar(data.getStringExtra("updateDist"), data.getStringExtra("updateAmo"), data.getStringExtra("updatePri"));
-            // mLogViewModel.insert(logCar);
+           // LogCar logCar = new LogCar(data.getStringExtra("updateDist"), data.getStringExtra("updateAmo"), data.getStringExtra("updatePri"));
+          //  mLogViewModel.insert(logCar);
         }
-        if (requestCode == RESULT_OK) {
+        if (requestCode == EXTRA_UPDATE) {
             android.util.Log.d(TAG, "onActivityResult: replyCode " + EXTRA_REPLY + " resultCode: " + RESULT_OK);
             String log_data = data.getStringExtra("updateDist");
             String log2_data = data.getStringExtra("updateAmo");
             String log3_data = data.getStringExtra("updatePri");
-            int id = data.getIntExtra("id", 1);
+            int id = data.getIntExtra("id", 0);
             mLogViewModel.update(new LogCar(id,log_data,log2_data,log3_data));
 
         }

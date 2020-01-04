@@ -10,13 +10,15 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import static com.example.fuellog.GetCar.logLink;
+
 public class NetworkUtils {
 
     private static final String LOG_TAG =
             NetworkUtils.class.getSimpleName();
 
     // Base URL for Vehicle API.
-    private static final String CAR_BASE_URL = "https://www.fueleconomy.gov/ws/rest/ympg/shared/ympgVehicle/26425";
+    public static final String CAR_BASE_URL = logLink;
     // Parameter to specify XML return data.
     private static final String FORMAT = "format";
 

@@ -21,7 +21,7 @@ import java.util.HashMap;
 public class GetCar extends AsyncTask<String, Void, String> {
 
     private WeakReference<TextView> mReturnData;
-
+    public static final String logLink = "https://www.fueleconomy.gov/ws/rest/ympg/shared/ympgVehicle/26425";
     GetCar(TextView carText) {
         this.mReturnData = new WeakReference<>(carText);
     }
