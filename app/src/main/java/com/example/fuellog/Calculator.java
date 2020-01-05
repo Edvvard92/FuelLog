@@ -5,7 +5,7 @@ package com.example.fuellog;
 public class Calculator {
  ;
     // Available operations
-    public enum Operator {CostPerGallon, CostPerMile, MilesPerGallon, KMPerLitre, test}
+    public enum Operator {CostPerGallon, CostPerMile, MilesPerGallon, KMPerLitre, APIKPL}
 
      // CostPerGallon operation
 
@@ -30,8 +30,8 @@ public class Calculator {
     public double KMPerLitre(double firstOperand, double secondOperand) {
         return (firstOperand * 1.6) / (secondOperand * 4.54);
     }
-    public double test(double firstOperand) {
-        return (firstOperand * 100);
+    public double APIKPL(double firstOperand) {
+        return (firstOperand / 2.352);
     }
 }
 

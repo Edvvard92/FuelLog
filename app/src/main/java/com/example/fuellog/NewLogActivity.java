@@ -5,20 +5,14 @@ import androidx.lifecycle.ViewModelProviders;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.text.TextUtils;
 import android.util.Log;
 import android.view.View;
-import android.widget.Button;
 import android.widget.EditText;
 import android.widget.TextView;
 
-import static com.example.fuellog.MainActivity.EXTRA_DATA_ID;
-import static com.example.fuellog.MainActivity.EXTRA_DATA_UPDATE_LOG;
-
 
 public class NewLogActivity extends AppCompatActivity {
-    public static final String EXTRA_REPLY = "com.example.android.fuellog.REPLY";
-    public static final String EXTRA_REPLY_ID = "com.example.android.fuellog.REPLY_ID";
+
     private LogViewModel logViewModel;
     private static final String TAG = "NewLogActivity";
     private Calculator mCalculator;
@@ -26,22 +20,19 @@ public class NewLogActivity extends AppCompatActivity {
     private EditText mEditLogFuel;
     private EditText mEditLogPrice;
     private TextView mResultTextView;
-    private EditText mReturnText;
+    private EditText mReturnMPG;
+    private EditText mReturnID;
     private View Update;
     private Integer Id;
     private String distance, price, amount;
-    EditText logDistance, logPrice, logAmount;
-    /**
-     * @return the operand value entered in an EditText as double.
-     */
+    private EditText logDistance, logPrice, logAmount;
+
     private static Double getOperand(EditText operandEditText) {
         String operandText = getOperandText(operandEditText);
         return Double.valueOf(operandText);
     }
 
-    /**
-     * @return the operand text which was entered in an EditText.
-     */
+
     private static String getOperandText(EditText operandEditText) {
         return operandEditText.getText().toString();
     }
@@ -52,13 +43,9 @@ public class NewLogActivity extends AppCompatActivity {
         setContentView(R.layout.activity_new_log);
         logViewModel = ViewModelProviders.of(this).get(LogViewModel.class);
 
-        mEditLogOdometer = findViewById(R.id.edit_log_odom);
-        mEditLogFuel = findViewById(R.id.edit_log_fuel);
-        mEditLogPrice = findViewById(R.id.edit_log_price);
-        mReturnText = findViewById(R.id.Output);
 
-
-        // Initialize the calculator class and all the views
+        mReturnMPG = findViewById(R.id.MPGOutput);
+        mReturnID = findViewById(R.id.IdOutput);
         mCalculator = new Calculator();
         mResultTextView = findViewById(R.id.operation_result_text_view);
         mEditLogOdometer = findViewById(R.id.edit_log_odom);
@@ -132,25 +119,23 @@ public class NewLogActivity extends AppCompatActivity {
        }
     }
 
+    public void fetchMPG(View view) {
+        new GetMPG(mReturnMPG).execute("");
 
-    public void fetchData(View view) {
-        new GetCar(mReturnText).execute("");
     }
-
+    public void fetchID(View view) {
+        new GetData(mReturnID).execute("");
+    }
 
     public void onMilesPerGallon(View view) {
         compute(Calculator.Operator.MilesPerGallon);
     }
-
-
     public void onKMPerLitre(View view) {
         compute(Calculator.Operator.KMPerLitre);
     }
-    public void onTest(View view) {
-        compute(Calculator.Operator.test);
+    public void onAPIKPL(View view) {
+        compute(Calculator.Operator.APIKPL);
     }
-
-
     public void onGallon(View view) {
         try {
             compute(Calculator.Operator.CostPerGallon);
@@ -160,9 +145,7 @@ public class NewLogActivity extends AppCompatActivity {
         }
     }
 
-    /**
-     * OnClick method called when the multiply Button is pressed.
-     */
+
     public void onMile(View view) {
         compute(Calculator.Operator.CostPerMile);
     }
@@ -176,7 +159,7 @@ public class NewLogActivity extends AppCompatActivity {
             operandOne = getOperand(mEditLogOdometer);
             operandTwo = getOperand(mEditLogFuel);
             operandThree = getOperand(mEditLogPrice);
-            operandFour = getOperand((EditText) mReturnText);
+            operandFour = getOperand((EditText) mReturnMPG);
         } catch (NumberFormatException nfe) {
             Log.e(TAG, "NumberFormatException", nfe);
             mResultTextView.setText(getString(R.string.computationError));
@@ -201,9 +184,9 @@ public class NewLogActivity extends AppCompatActivity {
                 result = String.valueOf(
                         mCalculator.CostPerMile(operandThree, operandTwo));
                 break;
-            case test:
+            case APIKPL:
                 result = String.valueOf(
-                        mCalculator.test(operandFour));
+                        mCalculator.APIKPL(operandFour));
                 break;
             default:
                 result = getString(R.string.computationError);

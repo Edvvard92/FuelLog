@@ -51,17 +51,15 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <TextView
-        android:id="@+id/operation_result_text_view"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="156dp"
-        android:layout_marginTop="4dp"
-        android:text="@string/result"
-        app:layout_constraintBottom_toTopOf="@+id/button"
-        app:layout_constraintEnd_toStartOf="@+id/operation_costpergallon_btn"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/operation_costpermile_btn" />
+    <Button
+        android:id="@+id/update"
+        style="@style/button_style"
+        android:layout_width="135dp"
+        android:layout_height="44dp"
+        android:onClick="update"
+        android:text="Update"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent" />
 
     <Button
         android:id="@+id/operation_costpermile_btn"
@@ -107,45 +105,66 @@
         android:id="@+id/operation_test_btn"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="292dp"
-        android:onClick="onTest"
-        android:text="@string/test_operation_text"
-        app:layout_constraintBottom_toTopOf="@+id/button_save"
+        android:onClick="onAPIKPL"
+        android:text="@string/apikpl_operation_text"
+        app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_log_price" />
+        app:layout_constraintTop_toBottomOf="@+id/operation_costpermile_btn"
+        app:layout_constraintVertical_bias="0.025" />
 
     <Button
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="224dp"
-        android:onClick="fetchData"
-        android:text="@string/get_info"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="28dp"
+        android:onClick="fetchMPG"
+        android:text="@string/get_avgmpg"
+        app:layout_constraintBottom_toTopOf="@+id/button1"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <TextView
+        android:id="@+id/operation_result_text_view"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:text="@string/result"
+        app:layout_constraintBottom_toTopOf="@+id/operation_kmpergallon_btn"
+        app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/operation_costpermile_btn" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_log_price" />
 
     <EditText
-        android:id="@+id/Output"
+        android:id="@+id/MPGOutput"
         android:layout_width="240dp"
         android:layout_height="41dp"
-        android:layout_marginBottom="236dp"
+        android:layout_marginBottom="32dp"
         android:text="@string/your_car"
-        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintBottom_toTopOf="@+id/IdOutput"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.236"
-        app:layout_constraintStart_toEndOf="@+id/button"
-        app:layout_constraintTop_toBottomOf="@+id/operation_result_text_view"
-        app:layout_constraintVertical_bias="0.225" />
+        app:layout_constraintHorizontal_bias="0.941"
+        app:layout_constraintStart_toEndOf="@+id/button" />
 
     <Button
-        android:id="@+id/update"
+        android:id="@+id/button1"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="40dp"
-        android:onClick="update"
-        android:text="Update"
+        android:layout_marginStart="4dp"
+        android:layout_marginBottom="100dp"
+        android:onClick="fetchID"
+        android:text="@string/get_car"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <EditText
+        android:id="@+id/IdOutput"
+        android:layout_width="240dp"
+        android:layout_height="41dp"
+        android:layout_marginBottom="104dp"
+        android:text="@string/data"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.581"
+        app:layout_constraintStart_toEndOf="@+id/button1" />
+
+
 
 </androidx.constraintlayout.widget.ConstraintLayout>

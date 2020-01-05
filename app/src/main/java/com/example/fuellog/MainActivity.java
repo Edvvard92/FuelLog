@@ -30,13 +30,13 @@ public class MainActivity extends AppCompatActivity {
     public static final String EXTRA_DATA_ID = "extra_data_id";
     private static final String TAG = "MainActivity";
     private LogViewModel mLogViewModel;
-    private TextView mReturnText;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        mReturnText = (TextView) findViewById(R.id.Output);
+
 
         Toolbar toolbar = findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
@@ -98,9 +98,7 @@ public class MainActivity extends AppCompatActivity {
         });
     }
 
-    public void fetchData(View view) {
-        new GetCar(mReturnText).execute("");
-    }
+
 
     private void launchNewLogActivity(LogCar logCar) {
         Intent intent = new Intent(this, NewLogActivity.class);

@@ -18,24 +18,15 @@
     <string name="car">Car</string>
     <string name="Output">TextView</string>
     <string name="get_data">Button</string>
-    <string name="get_info">GetAvgMPG</string>
+    <string name="get_avgmpg">GetAvgMPG</string>
+    <string name="get_carID">GetCarID</string>
     <string name="your_car">AvgMPG</string>
-
-    <!-- Button label for add operation -->
+    <string name="data">ID</string>
     <string name="kmperlitre_operation_text">KMPerLitre</string>
-
-    <!-- Button label for subtract operation -->
     <string name="milespergallon_operation_text">MilesPerGallon</string>
-
-    <!-- Button label for divide operation -->
     <string name="costpergallon_operation_text">CostPerGallon</string>
-
-    <!-- Button label for mul operation -->
     <string name="costpermile_operation_text">CostPerMile</string>
-
-    <string name="test_operation_text">test</string>
-
-    <!-- Message for textview in case of errors  -->
+    <string name="apikpl_operation_text">APIKPL</string>
     <string name="computationError">Error</string>
     <string name="result">Result</string>
 </resources>

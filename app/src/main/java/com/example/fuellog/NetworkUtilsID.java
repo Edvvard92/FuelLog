@@ -10,16 +10,15 @@ import java.io.InputStreamReader;
 import java.net.HttpURLConnection;
 import java.net.URL;
 
+import static com.example.fuellog.GetData.logLink;
 
-import static com.example.fuellog.GetMPG.logMPG;
-
-public class NetworkUtils {
+public class NetworkUtilsID {
 
     private static final String LOG_TAG =
             NetworkUtils.class.getSimpleName();
 
     // Base URL for Vehicle API.
-    public static final String CAR_BASE_URL =logMPG;
+    public static final String CAR_BASE_URL =logLink;
 
     // Parameter to specify XML return data.
     private static final String FORMAT = "format";

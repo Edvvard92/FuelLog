@@ -4,61 +4,55 @@ import android.os.AsyncTask;
 import android.util.Log;
 import android.widget.TextView;
 
-import com.example.fuellog.R;
-
-import org.json.JSONArray;
-import org.json.JSONObject;
 import org.xmlpull.v1.XmlPullParser;
 import org.xmlpull.v1.XmlPullParserException;
 import org.xmlpull.v1.XmlPullParserFactory;
 
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.StringReader;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 
-public class GetCar extends AsyncTask<String, Void, String> {
+public class GetData extends AsyncTask<String, Void, String> {
 
-    private WeakReference<TextView> mReturnData;
+    private WeakReference<TextView> mReturnID;
     public static final String logLink = "https://www.fueleconomy.gov/ws/rest/ympg/shared/ympgVehicle/26425";
-    GetCar(TextView carText) {
-        this.mReturnData = new WeakReference<>(carText);
+
+
+
+    GetData(TextView carText) {
+
+        this.mReturnID = new WeakReference<>(carText);
     }
+
 
     @Override
     protected String doInBackground(String... strings) {
-        return com.example.fuellog.NetworkUtils.getBookInfo(strings[0]);
+        return com.example.fuellog.NetworkUtilsID.getBookInfo(strings[0]);
     }
 
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-        String mpg = null;
+        String id;
 
         try {
             HashMap<String, String> data = parseXml(s);
-
-
-            try {
-                mpg = data.get("avgMpg");
-            } catch (Exception e) {
-                e.printStackTrace();
-            }
-
-            if (mpg != null) {
-                mReturnData.get().setText(mpg);
+            id = data.get("vehicleId");
+            if (id != null) {
+                mReturnID.get().setText(id);
             } else {
-                mReturnData.get().setText(R.string.no_results);
+                mReturnID.get().setText(R.string.no_results);
             }
 
         } catch (Exception e) {
             // If onPostExecute does not receive a proper JSON string,
             // update the UI to show failed results.
-            mReturnData.get().setText(R.string.no_results);
+            mReturnID.get().setText(R.string.no_results);
         }
 
     }
+
 
     public HashMap<String, String> parseXml(String xml) {
         XmlPullParserFactory factory;
