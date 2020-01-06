@@ -41,25 +41,31 @@
         app:layout_constraintTop_toBottomOf="@+id/edit_log_fuel" />
 
 
-    <Button
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/button_save"
-        style="@style/button_style"
-        android:layout_width="135dp"
-        android:layout_height="44dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
         android:onClick="saveData"
-        android:text="@string/button_save"
+        android:src="@drawable/ic_save_foreground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
 
-    <Button
+
+    <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/update"
-        style="@style/button_style"
-        android:layout_width="135dp"
-        android:layout_height="44dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="bottom|end"
+        android:layout_margin="@dimen/fab_margin"
+        android:layout_marginBottom="24dp"
         android:onClick="update"
-        android:text="Update"
+        android:src="@drawable/ic_update_foreground"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent" />
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/button_save" />
 
     <Button
         android:id="@+id/operation_costpermile_btn"
@@ -68,7 +74,10 @@
         android:onClick="onMile"
         android:text="@string/costpermile_operation_text"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/operation_kmpergallon_btn" />
+        app:layout_constraintTop_toBottomOf="@+id/operation_kmpergallon_btn"
+        style="?android:attr/borderlessButtonStyle"
+        android:tooltipText="Calculate the cost per mile"
+        />
 
     <Button
         android:id="@+id/operation_costpergallon_btn"
@@ -79,7 +88,9 @@
         android:text="@string/costpergallon_operation_text"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/operation_milespergallon_btn" />
+        app:layout_constraintTop_toBottomOf="@+id/operation_milespergallon_btn"
+        style="?android:attr/borderlessButtonStyle"
+        android:tooltipText="Calculate the cost per gallon"/>
 
     <Button
         android:id="@+id/operation_milespergallon_btn"
@@ -89,7 +100,9 @@
         android:onClick="onMilesPerGallon"
         android:text="@string/milespergallon_operation_text"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_log_price" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_log_price"
+        style="?android:attr/borderlessButtonStyle"
+        android:tooltipText="Calculate the miles per gallon"/>
 
     <Button
         android:id="@+id/operation_kmpergallon_btn"
@@ -99,7 +112,9 @@
         android:onClick="onKMPerLitre"
         android:text="@string/kmperlitre_operation_text"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_log_price" />
+        app:layout_constraintTop_toBottomOf="@+id/edit_log_price"
+        style="?android:attr/borderlessButtonStyle"
+        android:tooltipText="Calculate the kilometres per gallon"/>
 
     <Button
         android:id="@+id/operation_test_btn"
@@ -110,7 +125,9 @@
         app:layout_constraintBottom_toTopOf="@+id/button"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/operation_costpermile_btn"
-        app:layout_constraintVertical_bias="0.025" />
+        app:layout_constraintVertical_bias="0.025"
+        style="?android:attr/borderlessButtonStyle"
+        android:tooltipText="Calculate the kilometres per gallon from the API"/>
 
     <Button
         android:id="@+id/button"
@@ -120,7 +137,8 @@
         android:onClick="fetchMPG"
         android:text="@string/get_avgmpg"
         app:layout_constraintBottom_toTopOf="@+id/button1"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:tooltipText="Call the API for the average miles per gallon"/>
 
     <TextView
         android:id="@+id/operation_result_text_view"
@@ -152,7 +170,8 @@
         android:onClick="fetchID"
         android:text="@string/get_car"
         app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        android:tooltipText="Call the API for the car's ID"/>
 
     <EditText
         android:id="@+id/IdOutput"
@@ -164,6 +183,7 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.581"
         app:layout_constraintStart_toEndOf="@+id/button1" />
+
 
 
 

@@ -15,40 +15,46 @@ import java.util.HashMap;
 
 public class GetData extends AsyncTask<String, Void, String> {
 
-    private WeakReference<TextView> mReturnID;
-    public static final String logLink = "https://www.fueleconomy.gov/ws/rest/ympg/shared/ympgVehicle/26425";
-
-
+    private WeakReference<TextView> mReturnID, mReturnMPG;
 
     GetData(TextView carText) {
 
         this.mReturnID = new WeakReference<>(carText);
+        this.mReturnMPG = new WeakReference<>(carText);
     }
 
 
     @Override
     protected String doInBackground(String... strings) {
-        return com.example.fuellog.NetworkUtilsID.getBookInfo(strings[0]);
+        return com.example.fuellog.NetworkUtils.getBookInfo(strings[0]);
     }
 
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
         String id;
+        String mpg;
+
 
         try {
             HashMap<String, String> data = parseXml(s);
             id = data.get("vehicleId");
+            mpg = data.get("avgMpg");
             if (id != null) {
                 mReturnID.get().setText(id);
+                mReturnMPG.get().setText(mpg);
             } else {
                 mReturnID.get().setText(R.string.no_results);
+                mReturnMPG.get().setText("");
             }
 
         } catch (Exception e) {
-            // If onPostExecute does not receive a proper JSON string,
-            // update the UI to show failed results.
             mReturnID.get().setText(R.string.no_results);
+            mReturnMPG.get().setText("");
+            e.printStackTrace();
+
+
+
         }
 
     }

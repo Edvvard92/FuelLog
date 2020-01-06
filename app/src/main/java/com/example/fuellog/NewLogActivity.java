@@ -120,13 +120,11 @@ public class NewLogActivity extends AppCompatActivity {
     }
 
     public void fetchMPG(View view) {
-        new GetMPG(mReturnMPG).execute("");
-
+        new GetData(mReturnMPG).execute("");
     }
     public void fetchID(View view) {
         new GetData(mReturnID).execute("");
     }
-
     public void onMilesPerGallon(View view) {
         compute(Calculator.Operator.MilesPerGallon);
     }
