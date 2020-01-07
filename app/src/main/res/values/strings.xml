@@ -19,14 +19,15 @@
     <string name="Output">TextView</string>
     <string name="get_data">Button</string>
     <string name="get_avgmpg">GetAvgMPG</string>
-    <string name="get_carID">GetCarID</string>
-    <string name="your_car">AvgMPG</string>
+    <string name="get_emissions">EmissionScore</string>
+    <string name="your_avgmpg">AvgMPG</string>
+    <string name="your_emission">Emissions Score</string>
     <string name="data">ID</string>
     <string name="kmperlitre_operation_text">KMPerLitre</string>
     <string name="milespergallon_operation_text">MilesPerGallon</string>
     <string name="costpergallon_operation_text">CostPerGallon</string>
     <string name="costpermile_operation_text">CostPerMile</string>
     <string name="apikpl_operation_text">APIKPL</string>
-    <string name="computationError">Error</string>
+    <string name="computationError">Error, please ensure you have input all values and in correct format (including GETAVMPG)</string>
     <string name="result">Result</string>
 </resources>

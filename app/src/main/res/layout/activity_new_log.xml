@@ -133,12 +133,22 @@
         android:id="@+id/button"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="28dp"
         android:onClick="fetchMPG"
         android:text="@string/get_avgmpg"
-        app:layout_constraintBottom_toTopOf="@+id/button1"
+        android:tooltipText="Call the API for the average miles per gallon"
+        app:layout_constraintBottom_toTopOf="@+id/button_save"
+        app:layout_constraintStart_toStartOf="parent" />
+
+    <Button
+        android:id="@+id/button1"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:onClick="fetchFuel"
+        android:text="@string/get_emissions"
+        android:tooltipText="Call the API for the average miles per gallon"
         app:layout_constraintStart_toStartOf="parent"
-        android:tooltipText="Call the API for the average miles per gallon"/>
+        app:layout_constraintTop_toBottomOf="@+id/operation_costpergallon_btn" />
 
     <TextView
         android:id="@+id/operation_result_text_view"
@@ -154,37 +164,22 @@
         android:id="@+id/MPGOutput"
         android:layout_width="240dp"
         android:layout_height="41dp"
-        android:layout_marginBottom="32dp"
-        android:text="@string/your_car"
-        app:layout_constraintBottom_toTopOf="@+id/IdOutput"
+        android:text="@string/your_avgmpg"
+        app:layout_constraintBottom_toTopOf="@+id/update"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.941"
         app:layout_constraintStart_toEndOf="@+id/button" />
 
-    <Button
-        android:id="@+id/button1"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="4dp"
-        android:layout_marginBottom="100dp"
-        android:onClick="fetchID"
-        android:text="@string/get_car"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        android:tooltipText="Call the API for the car's ID"/>
-
     <EditText
-        android:id="@+id/IdOutput"
+        android:id="@+id/FuelOutput"
         android:layout_width="240dp"
         android:layout_height="41dp"
-        android:layout_marginBottom="104dp"
-        android:text="@string/data"
-        app:layout_constraintBottom_toBottomOf="parent"
+        android:layout_marginBottom="128dp"
+        android:text="@string/your_emission"
+        app:layout_constraintBottom_toTopOf="@+id/update"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.581"
-        app:layout_constraintStart_toEndOf="@+id/button1" />
-
-
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toEndOf="@+id/button" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

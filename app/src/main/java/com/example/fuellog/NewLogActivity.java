@@ -21,17 +21,16 @@ public class NewLogActivity extends AppCompatActivity {
     private EditText mEditLogPrice;
     private TextView mResultTextView;
     private EditText mReturnMPG;
-    private EditText mReturnID;
+    private EditText mReturnFuel;
     private View Update;
     private Integer Id;
     private String distance, price, amount;
     private EditText logDistance, logPrice, logAmount;
-
+   // public DecimalFormat results = new DecimalFormat("######.##");
     private static Double getOperand(EditText operandEditText) {
         String operandText = getOperandText(operandEditText);
         return Double.valueOf(operandText);
     }
-
 
     private static String getOperandText(EditText operandEditText) {
         return operandEditText.getText().toString();
@@ -45,13 +44,14 @@ public class NewLogActivity extends AppCompatActivity {
 
 
         mReturnMPG = findViewById(R.id.MPGOutput);
-        mReturnID = findViewById(R.id.IdOutput);
+        mReturnFuel = findViewById(R.id.FuelOutput);
         mCalculator = new Calculator();
         mResultTextView = findViewById(R.id.operation_result_text_view);
         mEditLogOdometer = findViewById(R.id.edit_log_odom);
         mEditLogFuel = findViewById(R.id.edit_log_fuel);
         mEditLogPrice = findViewById(R.id.edit_log_price);
-
+        fetchEmission(this);
+        fetchMPG(this);
         final Bundle extras = getIntent().getExtras();
 
         // If we are passed content, fill it in for the user to edit.
@@ -119,11 +119,11 @@ public class NewLogActivity extends AppCompatActivity {
        }
     }
 
-    public void fetchMPG(View view) {
+    public void fetchMPG(NewLogActivity view) {
         new GetData(mReturnMPG).execute("");
     }
-    public void fetchID(View view) {
-        new GetData(mReturnID).execute("");
+    public void fetchEmission(NewLogActivity view) {
+        new GetEmissions(mReturnFuel).execute("");
     }
     public void onMilesPerGallon(View view) {
         compute(Calculator.Operator.MilesPerGallon);
@@ -191,9 +191,8 @@ public class NewLogActivity extends AppCompatActivity {
                 break;
         }
         mResultTextView.setText(result);
+
     }
-
-
    }
 
 

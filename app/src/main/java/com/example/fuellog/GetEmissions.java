@@ -13,11 +13,11 @@ import java.io.StringReader;
 import java.lang.ref.WeakReference;
 import java.util.HashMap;
 
-public class GetData extends AsyncTask<String, Void, String> {
+public class GetEmissions extends AsyncTask<String, Void, String> {
 
     private WeakReference<TextView> mReturnID, mReturnMPG;
 
-    GetData(TextView carText) {
+    GetEmissions(TextView carText) {
 
         this.mReturnID = new WeakReference<>(carText);
         this.mReturnMPG = new WeakReference<>(carText);
@@ -26,20 +26,21 @@ public class GetData extends AsyncTask<String, Void, String> {
 
     @Override
     protected String doInBackground(String... strings) {
-        return com.example.fuellog.NetworkUtils.getBookInfo(strings[0]);
+        return com.example.fuellog.NetworkUtilsFuel.getBookInfo(strings[0]);
     }
 
     @Override
     protected void onPostExecute(String s) {
         super.onPostExecute(s);
-        String mpg;
+        String emissions;
 
 
         try {
             HashMap<String, String> data = parseXml(s);
-            mpg = data.get("avgMpg");
-            if (mpg != null) {
-                mReturnMPG.get().setText(mpg);
+            emissions = data.get("score");
+            if (emissions != null) {
+
+                mReturnMPG.get().setText(emissions);
             } else {
                 mReturnID.get().setText(R.string.no_results);
                 mReturnMPG.get().setText("");

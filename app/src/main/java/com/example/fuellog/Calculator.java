@@ -1,6 +1,7 @@
 package com.example.fuellog;
 
 
+import java.text.DecimalFormat;
 
 public class Calculator {
  ;
@@ -16,7 +17,7 @@ public class Calculator {
      // CostPerMile operation
 
     public double CostPerMile(double firstOperand, double secondOperand) {
-        return firstOperand / secondOperand;
+        return  firstOperand / secondOperand;
     }
 
      // MilesPerGallon operation
@@ -30,8 +31,10 @@ public class Calculator {
     public double KMPerLitre(double firstOperand, double secondOperand) {
         return (firstOperand * 1.6) / (secondOperand * 4.54);
     }
-    public double APIKPL(double firstOperand) {
+    public double APIKPL (double firstOperand) {
         return (firstOperand / 2.352);
     }
+
+
 }
 
