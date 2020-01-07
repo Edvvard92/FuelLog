@@ -13,8 +13,8 @@
             android:name=".NewLogActivity"
             android:label="New Data"
             android:parentActivityName=".MainActivity">
-
         </activity>
+
         <activity
             android:name=".MainActivity"
             android:label="@string/app_name"

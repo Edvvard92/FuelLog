@@ -10,6 +10,8 @@ import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 
+import java.text.DecimalFormat;
+
 
 public class NewLogActivity extends AppCompatActivity {
 
@@ -26,7 +28,7 @@ public class NewLogActivity extends AppCompatActivity {
     private Integer Id;
     private String distance, price, amount;
     private EditText logDistance, logPrice, logAmount;
-   // public DecimalFormat results = new DecimalFormat("######.##");
+
     private static Double getOperand(EditText operandEditText) {
         String operandText = getOperandText(operandEditText);
         return Double.valueOf(operandText);
@@ -50,7 +52,7 @@ public class NewLogActivity extends AppCompatActivity {
         mEditLogOdometer = findViewById(R.id.edit_log_odom);
         mEditLogFuel = findViewById(R.id.edit_log_fuel);
         mEditLogPrice = findViewById(R.id.edit_log_price);
-        fetchEmission(this);
+        fetchEmission (this);
         fetchMPG(this);
         final Bundle extras = getIntent().getExtras();
 
@@ -120,7 +122,7 @@ public class NewLogActivity extends AppCompatActivity {
     }
 
     public void fetchMPG(NewLogActivity view) {
-        new GetData(mReturnMPG).execute("");
+        new GetData (mReturnMPG).execute("");
     }
     public void fetchEmission(NewLogActivity view) {
         new GetEmissions(mReturnFuel).execute("");
@@ -164,11 +166,11 @@ public class NewLogActivity extends AppCompatActivity {
             return;
         }
 
-        String result;
+        String  result;
         switch (operator) {
             case MilesPerGallon:
                 result = String.valueOf(
-                        mCalculator.MilesPerGallon(operandOne, operandTwo));
+                         mCalculator.MilesPerGallon(operandOne, operandTwo));
                 break;
             case KMPerLitre:
                 result = String.valueOf(
@@ -176,11 +178,11 @@ public class NewLogActivity extends AppCompatActivity {
                 break;
             case CostPerGallon:
                 result = String.valueOf(
-                        mCalculator.CostPerGallon(operandThree, operandOne));
+                        mCalculator.CostPerGallon(operandThree, operandTwo));
                 break;
             case CostPerMile:
                 result = String.valueOf(
-                        mCalculator.CostPerMile(operandThree, operandTwo));
+                        mCalculator.CostPerMile(operandThree, operandOne));
                 break;
             case APIKPL:
                 result = String.valueOf(

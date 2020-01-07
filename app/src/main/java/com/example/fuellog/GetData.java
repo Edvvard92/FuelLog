@@ -11,10 +11,11 @@ import org.xmlpull.v1.XmlPullParserFactory;
 import java.io.IOException;
 import java.io.StringReader;
 import java.lang.ref.WeakReference;
+import java.text.DecimalFormat;
 import java.util.HashMap;
 
 public class GetData extends AsyncTask<String, Void, String> {
-
+    public DecimalFormat results = new DecimalFormat("###,###.##");
     private WeakReference<TextView> mReturnID, mReturnMPG;
 
     GetData(TextView carText) {
