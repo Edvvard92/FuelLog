@@ -13,30 +13,37 @@
     <EditText
         android:id="@+id/edit_log_odom"
         style="@style/text_view_style"
+        android:layout_width="432dp"
+        android:layout_height="61dp"
         android:hint="@string/hint_log"
         android:importantForAutofill="no"
-        android:inputType="numberDecimal"
+        android:inputType="textAutoComplete"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.666"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/edit_log_fuel"
         style="@style/text_view_style"
+        android:layout_width="433dp"
+        android:layout_height="56dp"
         android:hint="@string/hint_log1"
         android:importantForAutofill="no"
-        android:inputType="numberDecimal"
+        android:inputType="textAutoComplete"
         app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_log_odom" />
 
     <EditText
         android:id="@+id/edit_log_price"
         style="@style/text_view_style"
+        android:layout_width="434dp"
+        android:layout_height="58dp"
         android:hint="@string/hint_log2"
         android:importantForAutofill="no"
-        android:inputType="numberDecimal"
+        android:inputType="textAutoComplete"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edit_log_fuel" />
 
@@ -47,12 +54,11 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
+        android:layout_marginStart="24dp"
         android:onClick="saveData"
-        android:tooltipText="Save the log"
         android:src="@drawable/ic_save_foreground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent" />
-
 
     <com.google.android.material.floatingactionbutton.FloatingActionButton
         android:id="@+id/update"
@@ -60,136 +66,120 @@
         android:layout_height="wrap_content"
         android:layout_gravity="bottom|end"
         android:layout_margin="@dimen/fab_margin"
-        android:layout_marginBottom="24dp"
         android:onClick="update"
-        android:tooltipText="Update the log"
         android:src="@drawable/ic_update_foreground"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="1.0"
         app:layout_constraintStart_toEndOf="@+id/button_save" />
 
-    <Button
-        android:id="@+id/operation_costpergallon_btn"
-        style="?android:attr/borderlessButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:onClick="onGallon"
-        android:text="@string/costpergallon_operation_text"
-        android:tooltipText="Calculate the cost per gallon"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.945"
-        app:layout_constraintStart_toEndOf="@+id/operation_costpermile_btn"
-        app:layout_constraintTop_toBottomOf="@+id/operation_milespergallon_btn" />
 
     <Button
         android:id="@+id/operation_costpermile_btn"
         style="?android:attr/borderlessButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="162dp"
+        android:layout_height="0dp"
+        android:layout_marginStart="96dp"
         android:onClick="onMile"
         android:text="@string/costpermile_operation_text"
         android:tooltipText="Calculate the cost per mile"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/operation_kmpergallon_btn" />
+        app:layout_constraintTop_toBottomOf="@+id/operation_milespergallon_btn" />
+
+    <Button
+        android:id="@+id/operation_costpergallon_btn"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="161dp"
+        android:layout_height="38dp"
+        android:layout_marginStart="16dp"
+        android:onClick="onGallon"
+        android:text="@string/costpergallon_operation_text"
+        android:tooltipText="Calculate the cost per gallon"
+        app:layout_constraintStart_toEndOf="@+id/operation_milespergallon_btn"
+        app:layout_constraintTop_toBottomOf="@+id/edit_log_price" />
 
     <Button
         android:id="@+id/operation_milespergallon_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="161dp"
+        android:layout_height="37dp"
+        android:layout_marginStart="104dp"
         android:onClick="onMilesPerGallon"
         android:text="@string/milespergallon_operation_text"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_log_price"
-        style="?android:attr/borderlessButtonStyle"
-        android:tooltipText="Calculate the miles per gallon"/>
+        android:tooltipText="Calculate the miles per gallon"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/edit_log_price" />
 
     <Button
         android:id="@+id/operation_kmpergallon_btn"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="32dp"
+        style="?android:attr/borderlessButtonStyle"
+        android:layout_width="161dp"
+        android:layout_height="39dp"
+        android:layout_marginEnd="248dp"
         android:onClick="onKMPerLitre"
         android:text="@string/kmperlitre_operation_text"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_log_price"
-        style="?android:attr/borderlessButtonStyle"
-        android:tooltipText="Calculate the kilometres per gallon"/>
+        android:tooltipText="Calculate the kilometres per gallon"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/operation_costpergallon_btn" />
 
     <Button
         android:id="@+id/operation_test_btn"
         style="?android:attr/borderlessButtonStyle"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
+        android:layout_width="161dp"
+        android:layout_height="41dp"
+        android:layout_marginEnd="340dp"
         android:onClick="onAPIKPL"
         android:text="@string/apikpl_operation_text"
         android:tooltipText="Calculate the kilometres per gallon from the API"
-        app:layout_constraintBottom_toTopOf="@+id/button_save"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/operation_costpermile_btn"
-        app:layout_constraintVertical_bias="0.025" />
-
-
-
-
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/operation_costpermile_btn" />
 
     <TextView
         android:id="@+id/operation_result_text_view"
-        android:layout_width="0dp"
-        android:layout_height="wrap_content"
+        android:layout_width="152dp"
+        android:layout_height="24dp"
+        android:layout_marginTop="224dp"
+        android:layout_marginEnd="68dp"
         android:text="@string/result"
-        app:layout_constraintBottom_toTopOf="@+id/operation_kmpergallon_btn"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/edit_log_price" />
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/MPGOutput"
         android:layout_width="142dp"
-        android:layout_height="44dp"
-        android:layout_marginBottom="32dp"
+        android:layout_height="45dp"
+        android:layout_marginStart="8dp"
         android:text="@string/your_avgmpg"
-        app:layout_constraintBottom_toTopOf="@+id/update"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.561"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/textView5"
+        app:layout_constraintTop_toTopOf="parent" />
 
     <EditText
         android:id="@+id/FuelOutput"
-        android:layout_width="143dp"
-        android:layout_height="44dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginBottom="24dp"
+        android:layout_width="142dp"
+        android:layout_height="48dp"
         android:text="@string/your_emission"
-        app:layout_constraintBottom_toTopOf="@+id/MPGOutput"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.615"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintTop_toBottomOf="@+id/MPGOutput" />
 
     <TextView
         android:id="@+id/textView4"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="44dp"
+        android:layout_marginStart="372dp"
+        android:layout_marginTop="32dp"
         android:text="@string/get_emissions"
-        app:layout_constraintBottom_toTopOf="@+id/textView5"
-        app:layout_constraintEnd_toStartOf="@+id/FuelOutput"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/button_save"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
     <TextView
         android:id="@+id/textView5"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginStart="16dp"
-        android:layout_marginBottom="44dp"
+        android:layout_marginStart="52dp"
+        android:layout_marginTop="16dp"
         android:text="@string/your_avgmpg"
-        app:layout_constraintBottom_toTopOf="@+id/button_save"
-        app:layout_constraintEnd_toStartOf="@+id/MPGOutput"
-        app:layout_constraintHorizontal_bias="0.692"
-        app:layout_constraintStart_toStartOf="parent" />
+        app:layout_constraintStart_toEndOf="@+id/edit_log_odom"
+        app:layout_constraintTop_toTopOf="parent" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>

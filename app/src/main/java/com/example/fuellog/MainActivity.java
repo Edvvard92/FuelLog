@@ -62,7 +62,8 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
+        int gridColumnCount =
+                getResources().getInteger(R.integer.grid_column_count);
 
         ItemTouchHelper helper = new ItemTouchHelper(
                 new ItemTouchHelper.SimpleCallback(0,
