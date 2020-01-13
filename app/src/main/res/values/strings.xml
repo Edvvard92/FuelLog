@@ -28,6 +28,12 @@
     <string name="costpergallon_operation_text">CostPerGallon</string>
     <string name="costpermile_operation_text">CostPerMile</string>
     <string name="apikpl_operation_text">APIKPL</string>
+    <string name="kmpergallon_operation_text">KMPerGallon</string>
+    <string name="milesperlitre_operation_text">MilesPerLitre</string>
+    <string name="costperlitre_operation_text">CostPerLitre</string>
+    <string name="costperkm_operation_text">CostPerKM</string>
+    <string name="KM_operation_text">KMs</string>
+    <string name="litre_operation_text">Litres</string>
     <string name="computationError">Error, please ensure you have input all values and in correct format</string>
     <string name="result">Result</string>
 </resources>

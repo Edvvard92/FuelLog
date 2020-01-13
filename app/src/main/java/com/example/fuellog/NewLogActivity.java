@@ -136,6 +136,24 @@ public class NewLogActivity extends AppCompatActivity {
     public void onAPIKPL(View view) {
         compute(Calculator.Operator.APIKPL);
     }
+    public void onCostPerLitre(View view) {
+        compute(Calculator.Operator.CostPerLitre);
+    }
+    public void onCostPerKM(View view) {
+        compute(Calculator.Operator.CostPerKM);
+    }
+    public void onMilesPerLitre(View view) {
+        compute(Calculator.Operator.MilesPerLitre);
+    }
+    public void onKMPerGallon(View view) {
+        compute(Calculator.Operator.KMPerGallon);
+    }
+    public void onKM(View view) {
+        compute(Calculator.Operator.KM);
+    }
+    public void onLitre(View view) {
+        compute(Calculator.Operator.Litre);
+    }
     public void onGallon(View view) {
         try {
             compute(Calculator.Operator.CostPerGallon);
@@ -187,6 +205,30 @@ public class NewLogActivity extends AppCompatActivity {
             case APIKPL:
                 result = String.valueOf(
                         mCalculator.APIKPL(operandFour));
+                break;
+            case CostPerLitre:
+                result = String.valueOf(
+                        mCalculator.CostPerLitre(operandThree, operandTwo));
+                break;
+            case CostPerKM:
+                result = String.valueOf(
+                        mCalculator.CostPerKM(operandThree, operandOne));
+                break;
+            case MilesPerLitre:
+                result = String.valueOf(
+                        mCalculator.MilesPerLitre(operandOne, operandTwo));
+                break;
+            case KMPerGallon:
+                result = String.valueOf(
+                        mCalculator.KMPerGallon(operandOne,operandTwo));
+                break;
+            case KM:
+                result = String.valueOf(
+                        mCalculator.KM(operandOne));
+                break;
+            case Litre:
+                result = String.valueOf(
+                        mCalculator.Litre(operandTwo));
                 break;
             default:
                 result = getString(R.string.computationError);
